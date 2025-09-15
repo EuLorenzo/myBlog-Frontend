@@ -11,6 +11,7 @@ import {
 } from "./ui/card";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { toast } from "sonner";
 
 interface props {
   handleLogin: (LoginDTO: LoginDTO) => void;
@@ -21,7 +22,10 @@ export function LoginCard({ handleLogin }: props) {
   const [password, setPassword] = useState("");
 
   const onSubmit = () => {
-    if (!username || !password) return;
+    if (!username || !password) {
+      toast.error("Fill in all fields", { duration: 3000 });
+      return;
+    }
 
     const LoginDTO: LoginDTO = {
       username,

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 import api from "~/service/api";
+import useTokenValue from "./useTokenValue";
 
 const useAuth = () => {
+  const { setTokenValue } = useTokenValue();
   const [loading, setLoading] = useState(false);
   const login = (LoginDTO: LoginDTO) => {
     setLoading(true);
@@ -9,7 +12,9 @@ const useAuth = () => {
     const response = api
       .post("/auth/login", LoginDTO)
       .then((res) => {
-        console.log(res);
+        console.log(res.data.token);
+        setTokenValue(res.data.token);
+        toast.success("Login successful", { duration: 3000 });
       })
       .catch((err) => {
         console.log(err);
@@ -25,7 +30,7 @@ const useAuth = () => {
     const response = api
       .post("/auth/register", RegisterDTO)
       .then((res) => {
-        console.log(res);
+        toast.success("Registration successful", { duration: 3000 });
       })
       .catch((err) => {
         console.log(err);

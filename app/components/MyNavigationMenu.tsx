@@ -36,9 +36,9 @@ const MyNavigationMenu = () => {
       <NavigationMenuList className="gap-10">
         {menuItems.map((item) => (
           <NavigationMenuItem key={item.label}>
-            <Link to={item.href}>
-              <NavigationMenuLink>{item.label}</NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink asChild>
+              <Link to={item.href}>{item.label}</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>

@@ -1,5 +1,5 @@
 import MyNavigationMenu from "~/components/MyNavigationMenu";
-import type { Route } from "./+types/home";
+import type { Route } from "../+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,7 +8,7 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
+export default function publicHome() {
   return (
     <>
       <h1>Home</h1>

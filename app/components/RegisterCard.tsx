@@ -24,7 +24,7 @@ export function RegisterCard({ handleRegister }: props) {
 
   const onSubmit = () => {
     if (!email || !username || !password) {
-      toast.error("Preencha todos os campos", { duration: 3000 });
+      toast.error("Fill in all fields", { duration: 3000 });
       return;
     }
 

@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { ThemeProvider } from "./provider/theme-provider";
 import { Toaster } from "./components/ui/sonner";
+import { TokenProvider } from "./provider/TokenProvider";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -46,10 +47,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <ThemeProvider defaultTheme="dark">
-      <Outlet />
-      <Toaster position="top-center" richColors />
-    </ThemeProvider>
+    <TokenProvider>
+      <ThemeProvider defaultTheme="dark">
+        <Outlet />
+        <Toaster position="top-center" richColors />
+      </ThemeProvider>
+    </TokenProvider>
   );
 }
 
