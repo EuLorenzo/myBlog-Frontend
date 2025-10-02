@@ -4,7 +4,7 @@ import api from "~/service/api";
 import useTokenValue from "./useTokenValue";
 
 const useAuth = () => {
-  const { setTokenValue } = useTokenValue();
+  const { setTokenValue, setUserIdValue } = useTokenValue();
   const [loading, setLoading] = useState(false);
   const login = (LoginDTO: LoginDTO) => {
     setLoading(true);
@@ -12,8 +12,8 @@ const useAuth = () => {
     const response = api
       .post("/auth/login", LoginDTO)
       .then((res) => {
-        console.log(res.data.token);
         setTokenValue(res.data.token);
+        setUserIdValue(res.data.userId.toString());
         toast.success("Login successful", { duration: 3000 });
       })
       .catch((err) => {

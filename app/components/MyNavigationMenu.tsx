@@ -9,32 +9,18 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "./ui/navigation-menu";
-
-const menuItems = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Login",
-    href: "/login",
-  },
-
-  {
-    label: "Register",
-    href: "/register",
-  },
-  {
-    label: "About",
-    href: "/about",
-  },
-];
+import useTokenValue from "~/hooks/useTokenValue";
+import { menuItemsAuth, menuItemsNoAuth } from "~/utils/menuItems";
 
 const MyNavigationMenu = () => {
+  const { token } = useTokenValue();
+
+  const links = token ? menuItemsAuth : menuItemsNoAuth;
+
   return (
     <NavigationMenu className="m-auto mt-3">
       <NavigationMenuList className="gap-10">
-        {menuItems.map((item) => (
+        {links.map((item) => (
           <NavigationMenuItem key={item.label}>
             <NavigationMenuLink asChild>
               <Link to={item.href}>{item.label}</Link>

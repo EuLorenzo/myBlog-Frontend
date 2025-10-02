@@ -4,6 +4,8 @@ import { type RouteConfig, layout, route } from "@react-router/dev/routes";
 export default [
   layout("./layouts/AuthenticatedLayout.tsx", [
     route("/app", "./routes/private/authHome.tsx"),
+    route("/app/create-post", "./routes/private/createPost.tsx"),
+    route("/app/my-posts", "./routes/private/myPosts.tsx"),
     //route("/app/about", "./routes/about.tsx"),
   ]),
   layout("./layouts/UnauthenticatedLayout.tsx", [

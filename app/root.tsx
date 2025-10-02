@@ -50,7 +50,7 @@ export default function App() {
     <TokenProvider>
       <ThemeProvider defaultTheme="dark">
         <Outlet />
-        <Toaster position="top-center" richColors />
+        <Toaster position="top-right" richColors />
       </ThemeProvider>
     </TokenProvider>
   );
