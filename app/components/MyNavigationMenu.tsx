@@ -18,7 +18,7 @@ const MyNavigationMenu = () => {
   const links = token ? menuItemsAuth : menuItemsNoAuth;
 
   return (
-    <NavigationMenu className="m-auto mt-3">
+    <NavigationMenu className="m-auto mt-3 mb-5">
       <NavigationMenuList className="gap-10">
         {links.map((item) => (
           <NavigationMenuItem key={item.label}>

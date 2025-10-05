@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import api from "~/service/api";
 import useTokenValue from "./useTokenValue";
+import { toast } from "sonner";
 
 const usePost = () => {
   const { token, userId } = useTokenValue();
@@ -18,9 +19,28 @@ const usePost = () => {
     api
       .post("/post", PostDTO, config)
       .then((res) => {
+        toast.success("Post created successfully", { duration: 3000 });
         console.log(res.data);
       })
       .catch((err) => {
+        toast.error("Error creating post", { duration: 3000 });
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const deletePost = (id: number | null) => {
+    setLoading(true);
+
+    api
+      .delete(`/post/${id}`, config)
+      .then(() => {
+        toast.success("Post deleted successfully", { duration: 3000 });
+      })
+      .catch((err) => {
+        toast.error("Error deleting post", { duration: 3000 });
         console.log(err);
       })
       .finally(() => {
@@ -47,7 +67,7 @@ const usePost = () => {
     }
   };
 
-  return { loading, createPost, getUserPosts };
+  return { loading, createPost, deletePost, getUserPosts };
 };
 
 export default usePost;

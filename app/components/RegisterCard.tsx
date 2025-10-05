@@ -12,6 +12,7 @@ import {
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
 
 interface props {
   handleRegister: (RegisterDTO: RegisterDTO) => void;
@@ -21,6 +22,7 @@ export function RegisterCard({ handleRegister }: props) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const onSubmit = () => {
     if (!email || !username || !password) {
@@ -35,6 +37,7 @@ export function RegisterCard({ handleRegister }: props) {
     };
 
     handleRegister(RegisterDTO);
+    navigate("/login");
   };
 
   return (

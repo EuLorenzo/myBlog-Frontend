@@ -12,6 +12,6 @@ export default [
     route("/", "./routes/public/publicHome.tsx"),
     route("/login", "./routes/public/login.tsx"),
     route("/register", "./routes/public/register.tsx"),
-    route("/about", "./routes/about.tsx"),
+    route("/about", "./routes/public/about.tsx"),
   ]),
 ] satisfies RouteConfig;

@@ -19,6 +19,8 @@ const createPost = () => {
     };
 
     createPost(PostDTO);
+    setTitle("");
+    setContent("");
   };
 
   return (
