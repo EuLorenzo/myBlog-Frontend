@@ -14,30 +14,37 @@ const useAuth = () => {
       .then((res) => {
         setTokenValue(res.data.token);
         setUserIdValue(res.data.userId.toString());
-        toast.success("Login successful", { duration: 3000 });
+        return "Login successful";
       })
       .catch((err) => {
         console.log(err);
+        throw new Error("Login failed: " + err.message);
       })
       .finally(() => {
         setLoading(false);
       });
+
+    return response;
   };
 
   const register = (RegisterDTO: RegisterDTO) => {
     setLoading(true);
 
     const response = api
-      .post("/auth/register", RegisterDTO)
-      .then((res) => {
-        toast.success("Registration successful", { duration: 3000 });
+      .post<void>("/auth/register", RegisterDTO)
+      .then(() => {
+        console.log("Registration successful");
+        return "Registration successful";
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Registration failed with error: " + err);
+        throw new Error("Registration failed: " + err.message);
       })
       .finally(() => {
         setLoading(false);
       });
+
+    return response;
   };
 
   return {

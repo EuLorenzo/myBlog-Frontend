@@ -15,7 +15,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router";
 
 interface props {
-  handleLogin: (LoginDTO: LoginDTO) => void;
+  handleLogin: (username: string, password: string) => void;
 }
 
 export function LoginCard({ handleLogin }: props) {
@@ -24,17 +24,7 @@ export function LoginCard({ handleLogin }: props) {
   const navigate = useNavigate();
 
   const onSubmit = () => {
-    if (!username || !password) {
-      toast.error("Fill in all fields", { duration: 3000 });
-      return;
-    }
-
-    const LoginDTO: LoginDTO = {
-      username,
-      password,
-    };
-
-    handleLogin(LoginDTO);
+    handleLogin(username, password);
   };
 
   return (
