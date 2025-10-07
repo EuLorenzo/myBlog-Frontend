@@ -1,6 +1,6 @@
 interface PostDTO {
   id?: number;
-  userId?: string;
+  userId?: number;
   title: string;
   content: string;
 }

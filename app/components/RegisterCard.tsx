@@ -48,7 +48,9 @@ export function RegisterCard({ handleRegister }: props) {
           Fill the fields below to create to your account
         </CardDescription>
         <CardAction>
-          <Button variant="link">Sign in</Button>
+          <Button variant="link" onClick={() => navigate("/login")}>
+            Sign in
+          </Button>
         </CardAction>
       </CardHeader>
       <CardContent>

@@ -21,6 +21,7 @@ interface props {
 export function LoginCard({ handleLogin }: props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const onSubmit = () => {
     if (!username || !password) {
@@ -44,7 +45,9 @@ export function LoginCard({ handleLogin }: props) {
           Enter your username below to login to your account
         </CardDescription>
         <CardAction>
-          <Button variant="link">Sign Up</Button>
+          <Button variant="link" onClick={() => navigate("/register")}>
+            Sign Up
+          </Button>
         </CardAction>
       </CardHeader>
       <CardContent>

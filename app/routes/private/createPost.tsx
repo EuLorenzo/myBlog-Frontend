@@ -15,7 +15,7 @@ const createPost = () => {
     const PostDTO: PostDTO = {
       title,
       content,
-      userId: userId ?? "",
+      userId: userId ?? 0,
     };
 
     createPost(PostDTO);

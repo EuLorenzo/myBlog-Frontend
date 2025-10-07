@@ -21,7 +21,7 @@ export const menuItemsNoAuth = [
 export const menuItemsAuth = [
   {
     label: "Home",
-    href: "/app",
+    href: "/app/",
   },
   {
     label: "Create Post",

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -22,9 +22,15 @@ const MyNavigationMenu = () => {
       <NavigationMenuList className="gap-10">
         {links.map((item) => (
           <NavigationMenuItem key={item.label}>
-            <NavigationMenuLink asChild>
-              <Link to={item.href}>{item.label}</Link>
-            </NavigationMenuLink>
+            <NavLink to={item.href}>
+              {({ isActive }) => (
+                <NavigationMenuLink asChild>
+                  <span className={`${isActive ? "bg-accent " : ""}`}>
+                    {item.label}
+                  </span>
+                </NavigationMenuLink>
+              )}
+            </NavLink>
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>
