@@ -13,6 +13,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
+import { validateEmail } from "~/utils/emailValidator";
 
 interface props {
   handleRegister: (RegisterDTO: RegisterDTO) => void;
@@ -27,6 +28,9 @@ export function RegisterCard({ handleRegister }: props) {
   const onSubmit = () => {
     if (!email || !username || !password) {
       toast.error("Fill in all fields", { duration: 3000 });
+      return;
+    } else if (!validateEmail(email)) {
+      toast.error("Invalid email", { duration: 3000 });
       return;
     }
 
