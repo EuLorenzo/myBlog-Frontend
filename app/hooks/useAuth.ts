@@ -17,8 +17,8 @@ const useAuth = () => {
         return "Login successful";
       })
       .catch((err) => {
-        console.log(err);
-        throw new Error("Login failed: " + err.message);
+        console.log("Login failed: " + err.response.data);
+        throw new Error("Login failed: " + err.response.data);
       })
       .finally(() => {
         setLoading(false);
@@ -37,8 +37,8 @@ const useAuth = () => {
         return "Registration successful";
       })
       .catch((err) => {
-        console.log("Registration failed with error: " + err);
-        throw new Error("Registration failed: " + err.message);
+        console.log("Registration failed" + err.response.data);
+        throw new Error("Registration failed: " + err.response.data);
       })
       .finally(() => {
         setLoading(false);

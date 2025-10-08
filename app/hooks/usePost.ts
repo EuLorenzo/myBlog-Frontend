@@ -86,7 +86,33 @@ const usePost = () => {
     }
   };
 
-  return { loading, createPost, updatePost, deletePost, getUserPosts };
+  const getAllPosts = async () => {
+    setLoading(true);
+
+    const response = api
+      .get<PostResponseDTO[]>("/post", config)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => {
+        console.log("Failed getting all posts: " + err.response.data);
+        throw new Error("Failed getting all posts: " + err.response.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+
+    return response;
+  };
+
+  return {
+    loading,
+    createPost,
+    updatePost,
+    deletePost,
+    getUserPosts,
+    getAllPosts,
+  };
 };
 
 export default usePost;

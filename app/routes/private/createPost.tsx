@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
@@ -12,6 +13,9 @@ const createPost = () => {
   const { userId } = useTokenValue();
 
   const handleSubmit = () => {
+    if (!title || !content)
+      return toast.error("All fields are required", { duration: 3000 });
+
     const PostDTO: PostDTO = {
       title,
       content,
